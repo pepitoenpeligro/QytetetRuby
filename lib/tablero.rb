@@ -12,7 +12,6 @@ module ModeloQytetet
     private
     attr_writer :carcel, :casillas
     
-    
     def initialize
       inicializar()
     end
@@ -48,10 +47,31 @@ module ModeloQytetet
     end
     
     
-    publics
+    public
     def to_s
       return "Casillas = " << @casillas.to_s + "\t Cárcel = #{@carcel}"  << "\n"
     end
+    
+    #protected
+    def esCasillaCarcel(numeroCasilla)
+      raise NotImplementedError
+    end
+    
+    #protected
+    def getCarcel
+      @casillas.at(4)
+    end
+    
+    #protected
+    def obtenerCasillaNumero(numeroCasilla)
+      raise NotImplementedError
+    end
+    
+    #protected
+    def obtenerNuevaCasilla(casilla, desplazamiento)
+      raise NotImplementedError
+    end
+     
     
   end
 end

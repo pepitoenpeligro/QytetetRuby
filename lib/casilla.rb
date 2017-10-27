@@ -46,6 +46,139 @@ module ModeloQytetet
       end
     end
     
+    def getTipo()
+      return @tipo
+    end
+    
+    def getTitulo()
+      return @titulo
+    end
+    
+    #protected
+    def asignarPropietario(jugador)
+      raise NotImplementedError
+    end
+    
+    #protected
+    def calcularValorHipoteca()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def cancelarHipoteca()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def cobrarAlquiler()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def edificarCasa()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def edificarHotel()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def estaHipotecada()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def getCoste()
+      return @coste
+    end
+    
+    #protected
+    def getCosteHipoteca()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def getNumeroCasilla()
+      return @numeroCasilla
+    end
+    
+    #protected
+    def getNumCasas()
+      @numCasas
+    end
+    
+    #protected
+    def getNumHoteles()
+      @numHoteles
+    end
+    
+    #protected
+    def getPrecioEdificar()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def hipotecar()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def precioTotalComprar()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def propietarioEncarcelado()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def sePuedeEdificarCasa()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def sePuedeEdificarHotel()
+      raise NotImplementedError
+    end
+    
+    #protected 
+    def setNumCasas(numeroNuevo)
+      @numCasas = numeroNuevo
+    end
+    
+    #protected
+    def setNumHoteles(numeroNuevo)
+      @numHoteles = numeroNuevo
+    end
+    
+    #protected
+    def soyEdificable()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def tengoPropietario()
+      raise NotImplementedError
+    end
+    
+    #protected
+    def venderTitulo()
+      raise NotImplementedError
+    end
+    
+    private
+    def setTitulo(titulo)
+      @titulo = titulo
+    end
+    
+    def asignarTituloPropiedad()
+      raise NotImplementedError
+    end
+    
+    
     
   end
 end
