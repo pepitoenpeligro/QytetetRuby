@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: utf-8
 
 module ModeloQytetet
   require_relative '../tipo_sorpresa'
@@ -12,8 +10,27 @@ module ModeloQytetet
   require_relative '../jugador'
   require_relative '../qytetet'
   class QytetetTest
+    
+    
+    SEPARADOR = "\n_______________________________________________________" <<
+                "____________________________________________________\n\n\n\n\n"
+              
+    puts "\t\t\t\t" << "[RUBY]Prueba de unidad de la clase Qytetet" << 
+         "\n\n\n\n\n\n" 
+       
     juego = Qytetet.instance
     
-    puts juego.aplicarSorpresa    
+    jugadores = Array.new
+    jugadores << "Paqui"
+    jugadores << "Juan"
+    jugadores << "Samu"
+    jugadores << "Elisa"
+    jugadores << "Ana:pi"
+    
+    #juego.inicializarJugadores(jugadores)
+    
+    puts juego.inspect
+       
+       
   end
 end

@@ -1,7 +1,4 @@
 # encoding: utf-8
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
 
 module ModeloQytetet
   class TituloPropiedad
@@ -16,7 +13,7 @@ module ModeloQytetet
       @hipotecaBase = hipoBase
       @precioEdificar = precioEdif
       @casilla = nil
-      @jugador
+      @jugador = nil
     end
     
     def to_s
@@ -29,6 +26,10 @@ module ModeloQytetet
                 ",\tcasilla = " << @casilla.to_s <<
                 ",\tcasilla = " << @jugador.to_s <<
                 "}"
+    end
+    
+    def getCasilla()
+      return @casilla
     end
     
     #protected
@@ -73,7 +74,11 @@ module ModeloQytetet
     end
     
     def tengoPropietario()
-      raise NotImplementedError
+      return @jugador == nil
+    end
+    
+    def getHipotecada()
+      return @hipotecada
     end
     
     

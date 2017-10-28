@@ -1,7 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-
+# encoding: utf-8
 require_relative 'tipo_casilla'
 
 module ModeloQytetet
@@ -40,9 +37,9 @@ module ModeloQytetet
               "Numero Hoteles = #{@numHoteles} "  << "\t" <<
               "Numero Casas = #{@numCasas}" <<  "\t"     
       if @titulo != nil
-        return comun << "Titulo = #{@titulo}"  << "\n"
+        return comun << "Titulo = #{@titulo}"
       else
-         return comun << "Tipo =#{@tipo} " << "\n"
+         return comun << "Tipo =#{@tipo} "
       end
     end
     
@@ -86,7 +83,7 @@ module ModeloQytetet
     
     #protected
     def estaHipotecada()
-      raise NotImplementedError
+      return @titulo.getHipotecada()
     end
     
     #protected
@@ -156,7 +153,7 @@ module ModeloQytetet
     
     #protected
     def soyEdificable()
-      raise NotImplementedError
+      return @tipo == ModeloQytetet::TipoCasilla::CALLE
     end
     
     #protected

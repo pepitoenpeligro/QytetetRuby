@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: utf-8
 
 module ModeloQytetet
   class Jugador
@@ -24,7 +22,7 @@ module ModeloQytetet
     
     
     def tengoPropiedades()
-      raise NotImplementedError
+      return @propiedades.length != 0
     end
     
     #protected
@@ -39,7 +37,9 @@ module ModeloQytetet
     
     #protected
     def devolverCartaLibertad()
-      raise NotImplementedError
+      carta = @cartaLibertad
+      @cartaLibertad = nil
+      return carta
     end
     
     #protected
@@ -48,20 +48,51 @@ module ModeloQytetet
     end
     
     #protected 
-    def modificarSaldo()
-      raise NotImplementedError
+    def modificarSaldo(cantidad)
+      @saldo += cantidad
     end
     
     #protected
     def obtenerCapital()
-      raise NotImplementedError
+      capital = @saldo
+      for i in @propiedades.length
+        precioEdificarHotelyCasa = @propiedades.at(i).getCasilla().getPrecioEdificar()
+        costeBase = @propiedades.at(i).getCasilla().getCoste()
+        numCasas = @propiedades.at(i).getCasilla().getNumCasas();
+        numHoteles = @propiedades.at(i).getCasilla().getNumHoteles()
+        
+        if(!@propiedades.at(i).getHipotecada())
+          capital += costeBase * (numCasas + numHoteles)
+
+        else
+          capital -= costeBase * (numCasas + numHoteles);
+        end
+      end
+      return capital;
     end
     
     #protected 
     def obtenerPropiedadesHipotecadas(hipotecada)
-      raise NotImplementedError
+      hipotecadas = Array.new
+      noHipotecadas = Array.new
+      
+      for i in 0..@propiedades.length
+        if(@propiedades.at(i).isHipotecada())
+          hipotecadas << @propiedades.at(i)
+        else
+          noHipotecadas << @propiedades.at(i)
+        end
+      end
+      
+      if(hipotecada)
+        return hipotecadas
+      else
+        return noHipotecadas
+      end
+
     end
     
+ 
     #protected 
     def pagarCobrarPorCasaYHotel(cantidad)
       raise NotImplementedError
@@ -94,7 +125,7 @@ module ModeloQytetet
     
     #protected 
     def puedoVenderPropiedad(casilla)
-      raise NotImplementedError
+      return esDeMiPropiedad(casilla) && !casilla.getTitulo().isHipotecada()
     end
     
     #protected 
@@ -114,7 +145,7 @@ module ModeloQytetet
     
     #protected
     def tengoCartaLibertad()
-      raise NotImplementedError
+      return @cartaLibertad != nil
     end
     
     #protected
@@ -123,23 +154,42 @@ module ModeloQytetet
     end
     
     private 
-    def cuentasCasasHotelesTengo()
-      raise NotImplementedError
+    def cuantasCasasHotelesTengo()
+      numCasas = 0
+      numHoteles = 0
+      
+      for i in 0..@propiedades.length
+        numCasas += @propiedades.at(i).getCasilla().numCasas
+        numHoteles += @propiedades.at(i).getCasilla().numHoteles 
+      end
+      
+      return numCasas + numHoteles
     end
     
     private
     def eliminarDeMisPropiedades(casilla)
-      raise NotImplementedError
+      @propiedades.delete(casilla.getTitulo());
     end
     
     private
     def esDeMiPropiedad(casilla)
-      raise NotImplementedError
+      for i in 0..@propiedades.length
+        if(casilla.getTitulo == @propiedades.at(i))
+          return true
+        end
+      end
+      
+      return false
     end
-    
+
     private 
     def tengoSaldo(cantidad)
       raise NotImplementedError
+    end
+    
+    public 
+    def setSaldo(cantidad)
+      @saldo = cantidad
     end
  
    end

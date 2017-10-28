@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
 
 module ModeloQytetet
   require 'singleton'
@@ -81,11 +79,22 @@ module ModeloQytetet
     end
     
     def propiedadesHipotecadasJugador(hipotecadas)
-      raise NotImplementedError
+      casillasPropiedad = Array.new
+      
+      for i in 0..@jugadorActual.obtenerPropiedadesHipotecadas(hipotecadas).length
+        casillasPropiedad << @jugadorActual.obtenerPropiedadesHipotecadas(hipotecadas).at(i).getCasilla()
+      end
+       
+      return casillasPropiedad
+
     end
     
     def siguienteJugador()
-      raise NotImplementedError
+      for i in 0..@jugadores.length
+        if(@jugadores.at(i) == @jugadorActual)
+          return @jugadores.at((i + 1) %  MAX_JUGADORES)
+        end
+      end
     end
     
     def venderPropiedad(casilla)
@@ -121,7 +130,17 @@ module ModeloQytetet
     end
     
     def salidaJugadores()
-      raise NotImplementedError
+      for i in 0..@jugadores.length
+        @jugadores.at(i).setCasillaActual(0)
+        
+        @jugadores.at(i).setSaldo(7500)
+      end
+      
+      @jugadorActual = @jugadores.at(rand(MAX_JUGADORES))
+    end
+    
+    def getJugadores()
+      return @jugadores
     end
     
     

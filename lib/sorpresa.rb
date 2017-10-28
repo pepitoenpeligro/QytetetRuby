@@ -1,4 +1,5 @@
 #encoding: utf-8
+
 module ModeloQytetet
   
   # definicion de la clase Sorpresa
@@ -17,7 +18,7 @@ module ModeloQytetet
     end
     
     def to_s
-      return "Sorpresa {" + "texto = #{@texto}"  +  ",\ttipo = #{@tipo}" + ",\tvalor = #{@valor}" + "}\n";
+      return "Sorpresa {" + "texto = #{@texto}"  +  ",\ttipo = #{@tipo}" + ",\tvalor = #{@valor}" + "}";
     end
   end
   
