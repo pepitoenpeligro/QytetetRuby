@@ -1,6 +1,12 @@
 # encoding: utf-8
 
 module ModeloQytetet
+  require_relative 'casilla'
+  require_relative 'sorpresa'
+  require_relative 'tipo_casilla'
+  require_relative 'tipo_sorpresa'
+  require_relative 'titulo_propiedad'
+  
   class Jugador
     
     def initialize
@@ -27,8 +33,34 @@ module ModeloQytetet
     
     #protected
     def actualizarPosicion(casilla)
-      raise NotImplementedError
+      if(casilla.getNumeroCasilla() < @casillaActual.getNumeroCasilla())
+        modificarSaldo(SALDO_SALIDA)
+      end
+      
+      setCasillaActual(casilla)
+      
+      if casilla.soyEdificable()
+        tengoPropietario = casilla.tengoPropietario()
+        if tengoPropietario
+          encarcelado = casilla.propietarioEncarcelado
+          if encarcelado = casilla.propietarioEncarcelado()
+            if(!encarcelado)
+              modificarSaldo(casilla.cobrarAlquiler())
+            end
+          end 
+        end
+        
+      else 
+        if casilla.getTipo == ModeloQytetet::TipoCasilla::IMPUESTO
+          modificarSaldo(-casilla.coste)
+        end
+        
+      end
+      
+      return casilla.tengoPropietario
     end
+
+    
     
     #protected
     def comprarTitulo()
