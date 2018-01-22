@@ -1,87 +1,47 @@
-# encoding: utf-8
+#encoding :UTF-8
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
 
 module ModeloQytetet
   class TituloPropiedad
-    attr_reader :nombre, :hipotecada, :alquilerBase, :factorRevalorizacion, :hipotecaBase, :precioEdificar
-    attr_writer :hipotecada
-    
-    def initialize(n, alqBase, fRevalorizacion, hipoBase, precioEdif )
-      @nombre = n
+    attr_reader :nombre, :alquilerBase, :factorRevalorizacion, :hipotecaBase, :precioEdificar
+    attr_accessor :hipotecada, :casilla, :propietario 
+    def initialize(nom, alqBase, factReval, hipotBase, precEdificar)
+      @nombre = nom
       @hipotecada = false
       @alquilerBase = alqBase
-      @factorRevalorizacion = fRevalorizacion
-      @hipotecaBase = hipoBase
-      @precioEdificar = precioEdif
+      @factorRevalorizacion = factReval
+      @hipotecaBase = hipotBase
+      @precioEdificar = precEdificar
+      @propietario = nil
       @casilla = nil
-      @jugador = nil
     end
+    
+    def cobrar_alquiler(coste)
+      @propietario.modificar_saldo(-coste)
+    end
+    
+    def propietario()
+      
+    end
+    
+    def propietario_encarcelado
+      return @propietario.encarcelado
+    end
+    
+    def tengo_propietario()
+      ret = false
+      
+      if(@propietario !=nil)
+        ret = true
+      end
+      return ret
+    end
+    
     
     def to_s
-      return "Titulo de Propiedad {" << "nombre de la calle = " << @nombre <<
-                ",\t¿Esta hipotecado? = " << @hipotecada.to_s <<
-                ",\tPrecio Base a pagar = " << @alquilerBase.to_s  <<
-                ",\tRevalorizacion = " << @factorRevalorizacion.to_s <<
-                ",\tValor Hipoteca Base = " << @hipotecaBase.to_s <<
-                ",\tPrecio Edificacion = " << @precioEdificar.to_s <<
-                ",\tcasilla = " << @casilla.to_s <<
-                ",\tcasilla = " << @jugador.to_s <<
-                "}"
-    end
-    
-    def getCasilla()
-      return @casilla
-    end
-    
-    #protected
-    def cobrarAlquiler(coste)
-      raise NotImplementedError
-    end
-    
-    def getAlquilerBase
-      return @alquilerBase
-    end
-    
-    def getFactorRevalorizacion
-      return @factorRevalorizacion
-    end
-    
-    def getHipotecaBase
-      return @hipotecaBase
-    end
-    
-    def getNombre
-      return @nombre
-    end
-    
-    def getPrecioEdificar
-      @precioEdificar
-    end
-    
-    def propietarioEncarcelado
-      raise NotImplementedError
-    end
-    
-    def setCasilla(casilla)
-      @casilla = casilla
-    end
-    
-    def setHipotecada(hipotecada)
-      @hipotecada = hipotecada
-    end
-    
-    def setPropietario(jugador)
-      @jugador = jugador
-    end
-    
-    def tengoPropietario()
-      return @jugador == nil
-    end
-    
-    def getHipotecada()
-      return @hipotecada
-    end
-    
-    
-    
+      "Nombre: #{@nombre} \n Hipotecada: #{@hipotecada} \n Alquiler Base: #{@alquilerBase} \n Factor Revalorización: #{@factorRevalorizacion} \n Hipoteca Base: #{@hipotecaBase} \n Precio Edificar: #{@precioEdificar}\n Propietario: " + (@propietario == nil ? "" : @propietario.nombre)    
+    end    
   end
-end 
+end

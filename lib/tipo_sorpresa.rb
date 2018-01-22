@@ -1,16 +1,14 @@
-#encoding: utf-8
+#encoding :UTF-8
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
 
 module ModeloQytetet
-  class TipoSorpresa
-    PAGARCOBRAR = :PAGARCOBRAR 
-    IRACASILLA = :IARCASILLA
-    PORCASAHOTEL = :PORCASAHOTEL 
-    PORJUGADOR = :PORJUGADOR 
-    SALIRCARCEL = :SALIRCARCEL
+  module TipoSorpresa
+    IRACASILLA = :IrACasilla
+    SALIRCARCEL = :SalirCarcel
+    PAGARCOBRAR = :PagarCobrar
+    PORCASAHOTEL = :PorCasaHotel
+    PORJUGADOR = :PorJugador
   end
-  
 end
-
-
-
-

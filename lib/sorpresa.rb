@@ -1,25 +1,19 @@
-#encoding: utf-8
+#encoding :UTF-8
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
 
 module ModeloQytetet
-  
-  # definicion de la clase Sorpresa
   class Sorpresa
-    attr_reader :texto, :tipo, :valor
-    
-    # attr_reader equivale a:
-    #def texto
-    # return @texto
-    #end
-    
-    def initialize(txt, t, v)
-      @texto = txt
-      @tipo = t
+    attr_reader :texto, :valor, :tipo
+    def initialize(t, v, tp)
+      @texto = t
       @valor = v
+      @tipo = tp
     end
-    
+
     def to_s
-      return "Sorpresa {" + "texto = #{@texto}"  +  ",\ttipo = #{@tipo}" + ",\tvalor = #{@valor}" + "}";
+      "Texto: #{@texto} \n Valor: #{@valor} \n Tipo: #{@tipo}"
     end
   end
-  
 end
