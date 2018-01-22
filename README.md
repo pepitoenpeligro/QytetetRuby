@@ -1,3 +1,3 @@
 # Qytetet
 
-https://pepitoenpeligro.github.io/QytetetRuby/.
+https://pepitoenpeligro.github.io/QytetetRuby/
